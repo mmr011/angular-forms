@@ -14,10 +14,13 @@ export class UserSettingsFormComponent implements OnInit {
   originalUsersSettings: UserSettings = {
     name: '', 
     emailOffers: false, 
-    interfaceStyle: 'dark', 
+    interfaceStyle: 'Dark', 
     subscriptionType: 'Annual', 
     notes: 'this is a test note'
   };
+
+  singleModel = "On";
+  startDate: Date;
 
   userSettings: UserSettings = { ...this.originalUsersSettings };
   postError = false;
@@ -28,6 +31,7 @@ export class UserSettingsFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscriptionTypes = this.dataService.getSubscriptionTypes();
+    this.startDate = new Date();
   }
 
   onHttpError(errorResponse: any) {
